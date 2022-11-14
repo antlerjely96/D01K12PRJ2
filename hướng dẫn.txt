@@ -1,0 +1,77 @@
+id: bigint, pk, A.I, unsigned
+name: varchar(100)
+date_of_birth: date
+gender: int
+address: varchar(255)
+phone: varchar(13), unique
+email: varchar(255)
+password: varchar(255)
+
+
+created_at: datetime
+updated_at: datetime
+
+
+CRUD
+C: create: post
+R: read: get
+U: update: put
+D: delete: delete
+
+Query builder
+ORM eloquent
+
+Read:
+route -> tạo function trong controller -> lấy dữ liệu từ db -> trả dữ liệu lên view
+Lấy dữ liệu từ DB
+	controller gọi 1 function trong model -> tạo 1 function trong model để lấy dữ liệu từ db
+	sau khi lấy dữ liệu từ db thì model sẽ return dữ liệu đó về controller
+		Controller gọi function trong model
+			tạo đối tượng của model
+			Nhận dữ liệu được gửi về từ model: $<biến> = $<đối tượng> -> <function>
+	gửi dữ liệu lên view
+Trả dữ liệu lên view
+	tạo view
+	hiển thị view
+
+Create:
+Tạo view chứa form thêm
+Route -> tạo function trong controller để hiển thị ra form thêm
+Khi click vào nút "add" sẽ thêm dữ liệu lên db -> thêm xong sẽ quay lại route hiển thị danh sách
+	Khi click vào nút "add" sẽ thêm dữ liệu lên db
+		định nghĩa route để gọi đến function thêm xử lý trong controller
+		Vào controller tạo function
+		Gán route xử lý vào thuộc tính action của form
+		Trong function ở controller phải lấy dữ liệu
+			Tạo đối tượng của model
+			Gán các thuộc tính của đối tượng = trường thông tin được truyền sang
+			Gửi dữ liệu sang model (gọi function thêm xử lý ở model và truyền tham số vào function)
+			Lưu dữ liệu lên db
+Update:
+Tạo view chứa form sửa
+Vào danh sách (index của từng phần) thêm một nút để khi click sẽ sang form sửa
+Định nghĩa Route để hiển thị form sửa
+Vào function trong controller để hiển thị form
+Vào index gán link hiển thị form sửa
+Lấy dữ liệu của bản ghi đang cần sửa về
+Chuyển dữ liệu từ controller lên form
+Vào view chứa form để hiển thị dữ liệu của bản ghi đang được edit
+Định nghĩa route để khi click nào button sẽ thực hiện việc lưu dữ liệu lên db
+Chuyển đổi method của form sửa thành put
+Trong action của thẻ form sẽ gọi đến route vừa định nghĩa ở trên
+Vào trong controller định nghĩa function được gọi trong route
+Tiến hành lưu dữ liệu lên db
+	Lấy dữ liệu mới được sửa
+	Từ controller gọi function để sửa dữ liệu trong model
+		Tạo function trong model
+		Trong function ở model viết câu lệnh để update
+Trả về danh sách
+
+Delete
+Tạo route để xóa
+Vào index để tạo nút xóa
+Vào controller tạo method để xử lý xóa
+Gọi đến method trong model để xóa
+	Vào model tạo method
+	Viết query builder để xóa bản ghi
+Trong controller sẽ trả về index
