@@ -20,3 +20,15 @@ Route::get('/index',[\App\Http\Controllers\indexControllers::class, 'index']);
 
 //hien thi danh sach san pham
 Route::get('/products', [\App\Http\Controllers\ProductsController::class, 'index'])->name('products');
+//Hien thi danh sach nhan vien
+Route::get('/staffs',[\App\Http\Controllers\StaffsController::class, 'index'])->name('staffs.index');
+//Hien thi form them
+Route::get('/staffs/create', [\App\Http\Controllers\StaffsController::class, 'create'])->name('staffs.create');
+//Them du lieu len DB
+Route::post('/staffs/create', [\App\Http\Controllers\StaffsController::class, 'store'])->name('staffs.store');
+//Hien thi form sua
+Route::get('/staffs/{staffs}/edit', [\App\Http\Controllers\StaffsController::class, 'edit'])->name('staffs.edit');
+//Luu du lieu da sua len db
+Route::put('/staffs/{staffs}/edit', [\App\Http\Controllers\StaffsController::class, 'update'])->name('staffs.update');
+//Xoa du lieu
+Route::delete('/staffs/{staffs}', [\App\Http\Controllers\StaffsController::class, 'destroy'])->name('staffs.destroy');
