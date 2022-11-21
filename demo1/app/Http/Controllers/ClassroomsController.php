@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\classrooms;
 use App\Http\Requests\StoreclassroomsRequest;
 use App\Http\Requests\UpdateclassroomsRequest;
+use http\Env\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class ClassroomsController extends Controller
 {
@@ -15,7 +17,11 @@ class ClassroomsController extends Controller
      */
     public function index()
     {
-        //
+        $classrooms = new classrooms();
+        $classroom = $classrooms->index();
+        return view('classrooms.index', [
+            'classrooms' => $classroom
+        ]);
     }
 
     /**
@@ -25,7 +31,7 @@ class ClassroomsController extends Controller
      */
     public function create()
     {
-        //
+        return view('classrooms.create');
     }
 
     /**
@@ -36,7 +42,10 @@ class ClassroomsController extends Controller
      */
     public function store(StoreclassroomsRequest $request)
     {
-        //
+        $classrooms = new classrooms();
+        $classrooms->name = $request->name;
+        $classrooms->store($classrooms);
+        return Redirect::route('classrooms.index');
     }
 
     /**
@@ -58,7 +67,9 @@ class ClassroomsController extends Controller
      */
     public function edit(classrooms $classrooms)
     {
-        //
+        return view('classrooms.edit', [
+            'classrooms' => $classrooms
+        ]);
     }
 
     /**
@@ -70,17 +81,27 @@ class ClassroomsController extends Controller
      */
     public function update(UpdateclassroomsRequest $request, classrooms $classrooms)
     {
-        //
+        $classrooms = new classrooms();
+        $classrooms->id = $request->id;
+        $classrooms->name = $request->name;
+        $classrooms->edit();
+        return Redirect::route('classrooms.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\classrooms  $classrooms
+     * @param  \App\Http\Requests\UpdateclassroomsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(classrooms $classrooms)
+    public function destroy(classrooms $classrooms, UpdateclassroomsRequest $request)
     {
-        //
+        $classrooms = new classrooms();
+
+        $classrooms->id = $request->id;
+//        dd($classrooms->id);
+        $classrooms->destroyer($classrooms);
+        return Redirect::route('classrooms.index');
     }
 }

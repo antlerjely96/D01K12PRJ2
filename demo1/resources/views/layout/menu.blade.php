@@ -58,6 +58,29 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item" id="staff">
+                    <a href="#" class="nav-link" id="staff_manage">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Classrooms manage
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('classrooms.index') }}" class="nav-link" id="staff_list">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('classrooms.create') }}" class="nav-link" id="staff_create">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Create</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 {{--                <li class="nav-item">--}}
 {{--                    <a href="pages/widgets.html" class="nav-link">--}}
 {{--                        <i class="nav-icon fas fa-th"></i>--}}
