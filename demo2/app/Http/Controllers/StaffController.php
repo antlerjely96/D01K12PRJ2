@@ -40,6 +40,8 @@ class StaffController extends Controller
      */
     public function store(StoreStaffRequest $request)
     {
+//        $errors = $validator->
+//        $request->validated();
         Staff::create($request->all());
         return Redirect::route('staffs.index');
     }
@@ -63,7 +65,9 @@ class StaffController extends Controller
      */
     public function edit(Staff $staff)
     {
-        //
+        return view('staffs.edit', [
+           'staff' => $staff
+        ]);
     }
 
     /**
@@ -75,7 +79,8 @@ class StaffController extends Controller
      */
     public function update(UpdateStaffRequest $request, Staff $staff)
     {
-        //
+        $staff->update($request->all());
+        return Redirect::route('staffs.index');
     }
 
     /**
@@ -86,6 +91,7 @@ class StaffController extends Controller
      */
     public function destroy(Staff $staff)
     {
-        //
+        Staff::destroy($staff->id);
+        return Redirect::route('staffs.index');
     }
 }

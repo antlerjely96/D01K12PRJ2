@@ -32,16 +32,16 @@
             <td>{{ $staff->phone }}</td>
             <td>{{ $staff->email }}</td>
             <td>
-{{--                <a href="{{ route('staffs.edit', $staff->id) }}">--}}
-{{--                    Edit--}}
-{{--                </a>--}}
+                <a href="{{ route('staffs.edit', $staff->id) }}">
+                    Edit
+                </a>
             </td>
             <td>
-{{--                <form action="{{ route('staffs.destroy', $staff->id) }}" method="post">--}}
-{{--                    @csrf--}}
-{{--                    @method('DELETE')--}}
-{{--                    <button>Delete</button>--}}
-{{--                </form>--}}
+                <form action="{{ route('staffs.destroy', $staff->id) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button>Delete</button>
+                </form>
             </td>
         </tr>
     @endforeach
