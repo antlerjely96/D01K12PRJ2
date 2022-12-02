@@ -13,6 +13,6 @@ class StaffSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Staff::factory(50)->create();
     }
 }

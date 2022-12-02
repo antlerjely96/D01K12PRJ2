@@ -27,7 +27,7 @@ class StoreStaffRequest extends FormRequest
             'name' => 'required|regex:"/^[A-Za-zÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ ]+$"',
             'date_of_birth' => 'required',
             'address' => 'required',
-            'phone' => 'required|regex:"/^0[0-9]{9}$/"',
+            'phone' => 'required|regex:"/^0[0-9]{9,12}$/"',
             'email' => 'required|regex:"/^[A-Za-z]+[A-Za-z._0-9]*@[a-z]{3,7}
             .[a-z]{3,6}[a-z.]*/"',
             'password' => 'required|min:8'
